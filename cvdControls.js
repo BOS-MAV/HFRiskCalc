@@ -27,7 +27,7 @@ $(document).ready(function () {
     $("#diabMark").tooltip({title: "Please choose either yes or no",placement: "bottom", trigger: "manual"});
     $("#smokeMark").tooltip({title: "Please choose current, former or never",placement:"bottom",trigger:"manual"});
     $("#hyperMark").tooltip({title: "Please choose either yes or no",placement:"bottom",trigger:"manual"});
-    $("#Ser_Creat").tooltip({title:"Please enter a serum creatinine level between x and y",placement:"bottom",trigger:"manual"});
+    $("#Ser_Creat").tooltip({title:"Please enter a serum creatinine level between 0.3 and 25",placement:"bottom",trigger:"manual"});
     $("#COPD").tooltip({title:"Please choose either yes or no", placement: "bottom",trigger:"manual"});
     $('#sub').on('click', function (event) {
         var isvalidate = $("#myForm")[0].checkValidity();
@@ -108,6 +108,16 @@ $(document).ready(function () {
                                             {
                                                 $("#bpSys").tooltip("hide");
                                                 bpSysToolTipOn = 1;
+                                                if (!(SerCre_Val()))
+                                                {
+                                                    $("#Ser_Creat").tooltip("show");
+                                                    $("#Ser_Creat").focus();
+                                                }
+                                                else
+                                                {
+                                                    $("#Ser_Creat").tooltip("hide");
+                                                    txtSerCreatToolTipOn = 1;
+                                                }
                                             }
                                         }
                                     }
@@ -363,7 +373,7 @@ function txtAge_Val() {
 function txtBMI_Val() {
         var input = $("#txtBMI");
         
-        if ((parseInt(input.val()) < 15 || parseInt(input.val()) > 50) || (input.val() === ''))
+        if ((parseFloat(input.val()) < 15 || parseFloat(input.val()) > 50) || (input.val() === ''))
         {
             if (txtBMIToolTipOn===1)
             {
@@ -418,7 +428,7 @@ function bpSys_Val() {
 
 function serCreat_Val() {
     var input = $("#Ser_Creat");
-    if (parseFloat(input.val()) < .5 || parseFloat(input.val()) > 1.2 || input.val() === "")
+    if (parseFloat(input.val()) < 0.3 || parseFloat(input.val()) > 25 || input.val() === "")
     {
 
         if (txtSerCreatToolTipOn ===1)
@@ -442,7 +452,4 @@ function serCreat_Val() {
         return true;
     }
 }
-
-
-
 
