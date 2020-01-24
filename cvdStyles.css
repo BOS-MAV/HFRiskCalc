@@ -1,0 +1,124 @@
+  .tooltip > .tooltip-inner {
+                background-color: #f57b42; 
+                color: #FFFFFF; 
+                border: 1px #f57b42; 
+                padding: 15px;
+                font-size: 16px;
+                width: 200px;
+            }
+
+            .ui-controlgroup-vertical {
+                width: 150px;
+            }
+            .ui-controlgroup.ui-controlgroup-vertical > button.ui-button,
+            .ui-controlgroup.ui-controlgroup-vertical > .ui-controlgroup-label {
+                text-align: center;
+            }
+            #car-type-button {
+                width: 120px;
+            }
+            .ui-controlgroup-horizontal .ui-spinner-input {
+                width: 20px;
+            }
+            .btn-group button{
+                background-color:white;
+            }
+            .btn-primary, .btn-sm {
+                background-color:#3c8579 !important;
+                color:#00000 !important;
+                font-size: medium;
+                font-family: sans serif arial;
+              
+            }
+            .btn-selected {
+                background-color:blue !important;
+                color:white !important;
+            }
+            body {
+                background-color: mintcream;
+            }
+            .well {
+                background-color:#ffff;
+                width: 100%;
+            }
+
+            .well-sm{
+                width: 100%;
+            }
+            .topLabel {
+                display: block;
+                text-align:left;
+                font-size: 1.25em;
+            }
+
+            .topLabel1 {
+                display: block;
+                text-align:left;
+                font-size: 1.25em;
+            }
+            .block-legend {
+                text-align:center;
+                font-size: 2.25em;
+            }
+            .head-center {
+                text-align:center;
+            }
+            .btn-bottom {
+                text-align:center;
+            }
+            .jumbotron .container{
+                text-align: center;
+            }
+            .jumbotron {
+                background-color: #86b4bd;
+                height: 80%;
+                width: 100%;
+            }
+            .jumbotron .container button {
+                text-align: center;
+            }
+            .well button {
+                text-align:center;
+
+            }
+            .error{
+                display: none;
+                margin-left: 10px;
+            }		
+
+            .error_show{
+                color: red;
+                margin-left: 10px;
+            }
+            input.invalid, textarea.invalid{
+                border: 2px solid #f57b42;
+            }
+
+            input.valid, textarea.valid{
+                border: 2px solid green;
+            }
+            .active{
+                background:red;
+            }
+            button.btn:active{
+                background:red;
+            }
+            .discText {
+                font-size: 1.25em;
+            }
+            
+            .modal-content {
+                background-color:khaki;
+            }
+            
+            .modal-title {
+                font-size: 1.5em;
+            }
+            
+            .modal-body {
+                font-size: 1.25em;
+            }
+            .Vfooter {
+                font-size: 1.25em;
+                text-align: center;
+            }
