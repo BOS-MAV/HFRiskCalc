@@ -13,7 +13,8 @@ function calc_risk()
                 
                 //declare variables to hold the rest
                 var age,age_2, age_2ln, sex,race,diabetes, diabetesWeight,   hypertension, hypertension_t; 
-                var SBP,SBP_1, SBP_2,BMI,BMI_2,BMI_1,Scr,eGFR,eGFR2,COPD,Afib,pCad,pMI;
+                //added BMI_1ln
+                var SBP,SBP_1, SBP_2,BMI,BMI_2,BMI_1,BMI_1ln,Scr,eGFR,eGFR2,COPD,Afib,pCad,pMI; 
                 var mcage2 = [],
                  mcage2ln = [],
                  mcbmi1 = [],
@@ -124,6 +125,8 @@ function calc_risk()
                 BMI = parseFloat($("#txtBMI").val());
                 BMI_1 = Math.pow(BMI,-1);
                 BMI_2 = Math.pow(BMI,-2);
+                // Define BMI^{-1} * ln(BMI), used in HFrEF risk equation only
+                BMI_1ln = BMI_1*Math.log(BMI);
                 if ($("input[name = 'PrevMI']:checked").val() === "Yes")
                     pMI = 1;
                 else
@@ -176,7 +179,7 @@ function calc_risk()
                 mcbmi1[1] = mean_center(HFrEFCoeff[2],BMI_1,sex,race);
                 //next bmi-2
                 mcbmi2[0] = mean_center(HFpEFCoeff[3],BMI_2,sex,race);
-                mcbmi2[1] = mean_center(HFrEFCoeff[3],BMI_2,sex,race);
+                mcbmi2[1] = mean_center(HFrEFCoeff[3],BMI_1ln,sex,race); //replaced BMI_2 with BMI_1ln
                 //now SBP-1
                 mcsbp1[0] = mean_center(HFpEFCoeff[4],SBP_1,sex,race);
                 mcsbp1[1] = mean_center(HFrEFCoeff[4],SBP_1,sex,race);
@@ -380,3 +383,4 @@ function get_smokeWeight(type,sex,race,model)
     }
     return ret_val;
 }
+
