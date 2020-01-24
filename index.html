@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- jQuery and Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="cvdControls.js"></script>
+        <script src="riskcalc.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title>Heart Failure Risk Prediction Calculator</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type ="text/css" href="cvdStyles.css">
+      
+    </head>
+    <body >
+        <form id ="myForm" >
+            <div class ="container">
+                <div class="jumbotron clearfix">
+                    <h1 class = "head-center">Heart Failure Risk Prediction Calculator</h1>
+                    <div class="well well-sm">
+                        <legend class = "block-legend">Demographic Information</legend>
+                        <div class ="row">
+                            <div class ="col-sm-4 col-med-4 col-lg-2">
+                                <div class="btn-group" data-toggle="buttons" >
+                                    <label class = "topLabel">Current Age</label>
+
+                                    <div style="clear: both;"></div>
+                                    <label class="btn text-input">
+                                        <input type = "text" id ="txtAge" size = "2" maxlength ="2" oninput="this.value=this.value.replace(/[^0-9]/g,'');" required/>
+                                        <span class="error">Range 20-79</span>		
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-med-4 col-lg-3">
+                                <div class="btn-group colors" data-toggle="buttons" >
+                                    <label class ="topLabel">Sex</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn btn-primary btn-sm glyphicon" id = "sexMark"> 
+                                        <span class = "glyphicon glyphicon-check" id = "maleGlyph" style="display:none"></span>
+                                        <input type="radio" name="Sex" value="Male" required  > Male
+                                    </label>
+                                    <label class="btn btn-primary btn-sm glyphicon" id= "sexMark1">
+                                        <span class = "glyphicon glyphicon-check" id = "femaleGlyph" style="display:none"></span>
+                                        <input type="radio" name="Sex" value="Female" required> Female
+                                    </label>
+                                </div>
+                            </div>
+                            <div class ="col-sm-4 col-med-4 col-lg-3">
+                                <div class="btn-group colors" data-toggle="buttons" >
+                                    <label class ="topLabel">Race</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn btn-primary btn-sm" id="raceMark"> 
+                                        <span class = "glyphicon glyphicon-check" id = "whiteGlyph" style="display:none"></span>
+                                        <input type="radio" name="Race" value="White" required> White
+                                    </label>
+                                    <label class="btn btn-primary btn-sm" id = "raceMark1">
+                                        <span class = "glyphicon glyphicon-check" id = "afrAmGlyph" style="display:none"></span>
+                                        <input type="radio" name="Race" value="AfrAm" required> African American
+                                    </label>
+                                 </div>
+                            </div>
+                            <div class ="col-sm-4 col-med-4 col-lg-4">
+                                <div class="btn-group" data-toggle="buttons" >
+                                    <label class = "topLabel">BMI</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn text-input">
+                                        <input type = "text" id ="txtBMI" size = "2" maxlength ="2" oninput="this.value=this.value.replace(/[^0-9.]/g,'');" required/>
+                                        <span class="error">Range 15-50</span>		
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="well well-sm">
+                        <legend class = "block-legend">Medical History</legend>    
+                        <div class ="row">
+                            <div class ="col-sm-3 col-med-4 col-lg-4">
+                                <div class="btn-group colors" data-toggle="buttons" id ="diab" >
+                                    <label class = "topLabel">Do you have a <br/> history of diabetes?</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn btn-primary btn-sm" id = "diabMark" id = "diab1"> 
+                                        <span class = "glyphicon glyphicon-check" id = "diabYGlyph" style="display:none"></span>
+                                        <input type="radio" name="Diabetes" value="Yes"  required > Yes
+                                    </label>
+                                    <label class="btn btn-primary btn-sm" id = "diabMark1">
+                                        <span class = "glyphicon glyphicon-check" id = "diabNGlyph" style="display:none"></span>
+                                        <input type="radio" name="Diabetes" value="No"  required > No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class ="col-sm-3 col-med-4 col-lg-4">
+                                <div class="btn-group colors" data-toggle="buttons" id ="smok" >
+                                    </br>
+                                    <label class = "topLabel">Smoking History</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn btn-primary btn-sm" id = "smokeMark"> 
+                                        <span class = "glyphicon glyphicon-check" id = "smokeYGlyph" style="display:none"></span>
+                                        <input type="radio" name="Smoker" value="Current"  required> Current
+                                    </label>
+                                    <label class="btn btn-primary btn-sm" id = "smokeMark0"> 
+                                        <span class = "glyphicon glyphicon-check" id = "smokeY1Glyph" style="display:none"></span>
+                                        <input type="radio" name="Smoker" value="Former"  required> Former
+                                    </label>
+                                    <label class="btn btn-primary btn-sm" id = "smokeMark1">
+                                        <span class = "glyphicon glyphicon-check" id = "smokeNGlyph" style="display:none"></span>
+                                        <input type="radio" name="Smoker" value="Never" required> Never
+                                    </label>
+                                </div>
+                            </div>
+                            <div class ="col-sm-3 col-med-4 col-lg-4">
+                                <div class="btn-group colors" data-toggle="buttons" id ="hbp" >
+                                    <label class = "topLabel">Are you currently on </br>hypertension treatment?</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn btn-primary btn-sm" id="hyperMark"> 
+                                        <span class = "glyphicon glyphicon-check" id = "hyperYGlyph" style="display:none"></span>
+                                        <input type="radio" name="Hypertension" value="Yes"  required > Yes
+                                    </label>
+                                    <label class="btn btn-primary btn-sm" id = "hyperMark1">
+                                        <span class = "glyphicon glyphicon-check" id = "hyperNGlyph" style="display:none"></span>
+                                        <input type="radio" name="Hypertension" value="No"  required > No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class ="col-sm-3 col-med-4 col-lg-4">
+                                <div class="btn-group colors" data-toggle="buttons" id ="prevMIB" >
+                                    </br>
+                                    <label class = "topLabel">Have you had </br>a previous MI?</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn btn-primary btn-sm" id = "prevMIMark"> 
+                                        <span class = "glyphicon glyphicon-check" id = "prevMIYGlyph" style="display:none"></span>
+                                        <input type="radio" name="PrevMI" value="Yes"  required> Yes
+                                    </label>
+                                    <label class="btn btn-primary btn-sm" id = "prevMIMark1">
+                                        <span class = "glyphicon glyphicon-check" id = "prevMINGlyph" style="display:none"></span>
+                                        <input type="radio" name="PrevMI" value="No"  required > No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class ="col-sm-3 col-med-4 col-lg-4">
+                                <div class="btn-group colors" data-toggle="buttons" id ="CADB" >
+                                    </br>
+                                    <label class = "topLabel">Have you been diagnosed </br>with Coronary Artery Disease?</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn btn-primary btn-sm" id = "CADMark"> 
+                                        <span class = "glyphicon glyphicon-check" id = "CADYGlyph" style="display:none"></span>
+                                        <input type="radio" name="PrevCAD" value="Yes"  required> Yes
+                                    </label>
+                                    <label class="btn btn-primary btn-sm" id = "CADMark1">
+                                        <span class = "glyphicon glyphicon-check" id = "CADNGlyph" style="display:none"></span>
+                                        <input type="radio" name="PrevCAD" value="No"  required > No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class ="col-sm-3 col-med-4 col-lg-4">
+                                <div class="btn-group colors" data-toggle="buttons" id ="AFB" >
+                                    </br>
+                                    <label class = "topLabel">Have you been diagnosed </br>with Atrial Fibrillation?</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn btn-primary btn-sm" id = "aFibMark"> 
+                                        <span class = "glyphicon glyphicon-check" id = "AFIBYGlyph" style="display:none"></span>
+                                        <input type="radio" name="PrevAFIB" value="Yes"  required> Yes
+                                    </label>
+                                    <label class="btn btn-primary btn-sm" id = "aFibMark1">
+                                        <span class = "glyphicon glyphicon-check" id = "AFIBNGlyph" style="display:none"></span>
+                                        <input type="radio" name="PrevAFIB" value="No"  required > No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class ="row">
+                            <div class ="col-sm-3 col-med-4 col-lg-4">
+                                <div class="btn-group colors" data-toggle="buttons" id ="COPDB" >
+                                    <label class = "topLabel">Do you have COPD?</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn btn-primary btn-sm" id = "COPDMark" id = "COPD"> 
+                                        <span class = "glyphicon glyphicon-check" id = "COPDYGlyph" style="display:none"></span>
+                                        <input type="radio" name="COPD" value="Yes"  required > Yes
+                                    </label>
+                                    <label class="btn btn-primary btn-sm" id = "COPDMark1">
+                                        <span class = "glyphicon glyphicon-check" id = "COPDNGlyph" style="display:none"></span>
+                                        <input type="radio" name="COPD" value="No"  required > No
+                                    </label>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="well well-sm">
+                        <legend class = "block-legend">Blood Pressure and Labs</legend>
+                        <div class ="row">
+                            <div class ="col-sm-6 col-med-6 col-lg-6">
+                                <div class="btn-group" data-toggle="buttons" >
+                                    <label class = "topLabel">Systolic Blood Pressure (mm Hg)</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn text-input">
+                                        <input type = "text" id = "BP_Sys" size = "4" maxlength ="3" oninput="this.value=this.value.replace(/[^0-9]/g,'');" required/>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class ="col-sm-6 col-med-6 col-lg-6">
+                                <div class="btn-group" data-toggle="buttons" >
+                                    <label class = "topLabel">Serum Creatinine</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn text-input">
+                                        <input type = "text" id = "Ser_Creat" size = "4" maxlength = "5" oninput="this.value=this.value.replace(/[^0-9.]/g,'');" required/>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 text-center"> 
+                        <button type="button" id = "sub" class="btn btn-primary btn-center text-center btn-selected" >Estimate Risk</button>
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Your Results</h4>
+                                        <i class ="fa fa-heartbeat fa-5x" style="color:red"  > </i>   
+                                    </div>
+                                    <div class="modal-body">
+                                        
+                                        <label id ="message" class="result"></label>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "discText"> <br/><br/><br/></div>
+                </div>
+                <div class ="Vfooter">Version 1.0  Last updated: 01/23/2020</div>
+            </div>
+        </form>
+    </body>
+</html>
