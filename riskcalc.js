@@ -10,11 +10,10 @@ function calc_risk()
                 //declare a totscore variable
                 
                 var totScore;
-                
                 //declare variables to hold the rest
                 var age,age_2, age_2ln, sex,race,diabetes, diabetesWeight,   hypertension, hypertension_t; 
                 //added BMI_1ln
-                var SBP,SBP_1, SBP_2,BMI,BMI_2,BMI_1,BMI_1ln,Scr,eGFR,eGFR2,COPD,Afib,pCad,pMI; 
+                var SBP,SBP_1, SBP_2,BMI,BMI_2,BMI_1,BMI_1ln,Scr,eGFR,eGFR2,COPD,Afib,pCad,pMI,height,weight; 
                 var mcage2 = [],
                  mcage2ln = [],
                  mcbmi1 = [],
@@ -28,27 +27,7 @@ function calc_risk()
                  smokerWeight = [],
                  risk = [];
 
-                //initialize an array to hold the mean centering coefficients for HFpEF and HFrEF
-               /* var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() 
-                {
-                    while ((this.readyState !== 4) || (this.status !== 200))
-                    {
-                        alert(x1);
-                        x1+=1;
-                    }
-                    if (this.readyState === 4 && this.status === 200) 
-                    {
-                        var x = JSON.parse(this.responseText);
-
-                    }
-                  HFpEFCoeff = x;
-                  alert(HFpEFCoeff);
-                  alert(ct);
-                  ct+=1;
-                };
-                xmlhttp.open("GET", "HFpEFmeancenter.txt", true);
-                xmlhttp.send();*/
+                //initialize arrays to hold the mean centering coefficients for HFpEF and HFrEF
                 HFpEFCoeff =    [[0.0002733,0.0003444,0.0003619,0.0004377],
                                 [0.001114,0.001364,0.001423,0.001686],
                                 [0.03517,0.0355,0.03558,0.0342],
@@ -58,16 +37,6 @@ function calc_risk()
                                 [76.21,86.17,80.08,93.05],
                                 [6098,7835,6733,9054]];
                 //now get HFrEF
-               /* var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() 
-                {
-                    if (this.readyState === 4 && this.status === 200) 
-                    {
-                        HFrEFCoeff = JSON.parse(this.responseText);
-                    }
-                };
-                xmlhttp.open("GET", "HFpEFmeancenter.txt", true);
-                xmlhttp.send();*/
                 HFrEFCoeff =    [[0.0002733,0.0003444,0.0003619,0.0004377],
                                 [0.001114,0.001364,0.001423,0.001686],
                                 [0.03517,0.0355,0.03558,0.0342],
@@ -122,7 +91,17 @@ function calc_risk()
                     hypertension = 1;
                 else
                     hypertension = 0;
-                BMI = parseFloat($("#txtBMI").val());
+                //check here if the radio button has been checked
+                if ($("#entBMI").text()==="Enter BMI") 
+                {
+                    height = parseFloat($("#txtHeight").val());
+                    weight = parseFloat($("#txtWeight").val());
+                    BMI = calc_bmi(height,weight);
+                }
+                else
+                {
+                       BMI = parseFloat($("#txtBMI").val());
+                }
                 BMI_1 = Math.pow(BMI,-1);
                 BMI_2 = Math.pow(BMI,-2);
                 // Define BMI^{-1} * ln(BMI), used in HFrEF risk equation only
@@ -381,6 +360,11 @@ function get_smokeWeight(type,sex,race,model)
                 ret_val = 0.53959;
         }
     }
+    return ret_val;
+}
+function calc_bmi(ht,wt)
+{
+    var ret_val = (wt/ht/ht)*703;
     return ret_val;
 }
 
