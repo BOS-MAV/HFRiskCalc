@@ -63,17 +63,52 @@
                                     </label>
                                  </div>
                             </div>
-                            <div class ="col-sm-4 col-med-4 col-lg-4">
+                            <div class = "col-sm-4 col-med-4 col-lg-2 bmiHtWt">
+                                <div class="btn-group" data-toggle="buttons" >
+                                    <label class = "topLabel">Height (inches)</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn text-input">
+                                        <input type = "text" id ="txtHeight" size = "4" maxlength ="4" oninput="this.value=this.value.replace(/[^0-9.]/g,'');" required/>
+                                        <span class="error">Range 40-82</span>		
+                                    </label>
+                                </div>
+                            </div>
+                            <div class = "col-sm-4 col-med-4 col-lg-2 bmiHtWt">
+                                <div class="btn-group" data-toggle="buttons" >
+                                    <label class = "topLabel">Weight (pounds)</label>
+                                    <div style="clear: both;"></div>
+                                    <label class="btn text-input">
+                                        <input type = "text" id ="txtWeight" size = "5" maxlength ="5" oninput="this.value=this.value.replace(/[^0-9.]/g,'');" required/>
+                                        <span class="error">Range 80-350</span>		
+                                    </label>
+                                </div>
+                            </div>
+                            <div class ="col-sm-4 col-med-4 col-lg-4 bmiDirect" style = "display:none">
                                 <div class="btn-group" data-toggle="buttons" >
                                     <label class = "topLabel">BMI</label>
                                     <div style="clear: both;"></div>
                                     <label class="btn text-input">
-                                        <input type = "text" id ="txtBMI" size = "2" maxlength ="2" oninput="this.value=this.value.replace(/[^0-9.]/g,'');" required/>
+                                        <input type = "text" id ="txtBMI" size = "2" maxlength ="2" oninput="this.value=this.value.replace(/[^0-9.]/g,'');" />
                                         <span class="error">Range 15-50</span>		
                                     </label>
                                 </div>
                             </div>
+                            
                         </div>
+                        <div class ="row align-items-end" >
+                            <div class ="col-sm-5 col-med-5 col-lg-4 pull-right">
+                                  <div class="btn-group colors " data-toggle="buttons" >
+                                    <div style="clear: both;"></div>
+                                      <label class="btn btn-primary btn-sm" id="hwEntryMark"> 
+                                        <button id = "entBMI" type="button" class="btn btn-primary">Enter BMI</button>
+                                         <label id = "BMIValue" class="txtLabel" style = "display:none"></label> 
+                                    </label>
+                                    
+                                    
+                                         
+                                 </div>
+
+                            </div>
                     </div>
                     <div class="well well-sm">
                         <legend class = "block-legend">Medical History</legend>    
