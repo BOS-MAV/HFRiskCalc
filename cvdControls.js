@@ -3,7 +3,13 @@ var bpSysToolTipOn = 1;
 var txtBMIToolTipOn = 1;
 var txtSerCreatToolTipOn = 1;
 var COPDToolTipOn = 1;
+var txtHeightToolTipOn= 1;
+var txtWeightToolTipOn = 1;
+    function numberFormat(val, decimalPlaces) {
 
+    var multiplier = Math.pow(10, decimalPlaces);
+    return (Math.round(val * multiplier) / multiplier).toFixed(decimalPlaces);
+}
 $(function () {
     $(".controlgroup").controlgroup();
     $(".controlgroup-vertical").controlgroup({
@@ -29,9 +35,11 @@ $(document).ready(function () {
     $("#hyperMark").tooltip({title: "Please choose either yes or no",placement:"bottom",trigger:"manual"});
     $("#Ser_Creat").tooltip({title:"Please enter a serum creatinine level between 0.3 and 25",placement:"bottom",trigger:"manual"});
     $("#COPD").tooltip({title:"Please choose either yes or no", placement: "bottom",trigger:"manual"});
+    $("#txtHeight").tooltip({title:"Please enter a height between 40 and 82 inches",placement:"bottom",trigger:"manual"});
+    $("#txtWeight").tooltip({title:"Please enter a weight between 80 and 350 pounds",placement:"bottom",trigger:"manual"});
     $('#sub').on('click', function (event) {
         var isvalidate = $("#myForm")[0].checkValidity();
-        if ((isvalidate) && txtAge_Val() && txtBMI_Val() && bpSys_Val()) {
+        if ((isvalidate) && txtAge_Val() && txtNewBMI_Val() && bpSys_Val()) {
             event.preventDefault();
             var risk_res = [];
             risk_res = calc_risk();
@@ -62,12 +70,28 @@ $(document).ready(function () {
                     }
                     else
                     {
-                  
-                        if (txtBMI_Val())
+                        if ($("#entBMI").text ==="Enter Weight and Height")
                         {
-                            txtBMIToolTip = 1;
-                            $("#txtBMI").tooltip("hide");
-                            if (($("input[name = 'Diabetes']:checked").val() !== 'Yes') && ($("input[name = 'Diabetes']:checked").val() != 'No'))
+                            if (txtBMI_Val())
+                            {
+                                txtBMIToolTip = 1;
+                                $("#txtBMI").tooltip("hide");
+                            }
+                            else
+                            {
+                                if (txtHeight_Val())
+                                {
+                                    txtHeightToolTip = 1;
+                                    $("#txtHeight").tooltip("hide");
+                                }
+                                if (txtWeight_val())
+                                {
+                                    txtWeightToolTip = 1;
+                                    $("#txtWeight").tooltip("hide");
+                                }
+                            }
+                        }
+                            if (($("input[name = 'Diabetes']:checked").val() !== 'Yes') && ($("input[name = 'Diabetes']:checked").val() !== 'No'))
                             {
                                 $("#diabMark").tooltip("show");
                                 $("#diab").focus();
@@ -108,7 +132,7 @@ $(document).ready(function () {
                                             {
                                                 $("#bpSys").tooltip("hide");
                                                 bpSysToolTipOn = 1;
-                                                if (!(SerCre_Val()))
+                                                if (!(serCreat_Val()))
                                                 {
                                                     $("#Ser_Creat").tooltip("show");
                                                     $("#Ser_Creat").focus();
@@ -128,7 +152,7 @@ $(document).ready(function () {
                 }
             }
         }
-    });
+    );
     $("#txtAge").blur(function () {
           if (txtAge_Val())
           {
@@ -142,6 +166,29 @@ $(document).ready(function () {
             txtBMIToolTipOn = 1;
         }
     });
+    
+    $("#txtHeight").blur(function() {
+        if(txtHeight_Val())
+        {
+            txtHeightToolTipOn = 1;
+        }
+    });
+    
+    $("#txtWeight").blur(function() {
+        if(txtWeight_Val())
+        {
+            txtWeightToolTipOn = 1;
+            if (txtHeightToolTipOn === 1)
+            {
+                var wt = $("#txtWeight").val();
+                var ht = $("#txtHeight").val();
+                var newBMI = numberFormat(calc_bmi(ht,wt),2);
+                $("#BMIValue").text("Calculated BMI: "+newBMI.toString());
+                $("#BMIValue").show();
+            }
+        }
+    });
+    
 
     $("input[name='Sex']").change(function () {
         $("#sexMark").tooltip("hide");
@@ -340,7 +387,29 @@ $(document).ready(function () {
         }
     });
     
-       
+ $("#entBMI").click(function () {
+        if ($("#entBMI").text()==="Enter BMI")
+        {
+            $(".bmiDirect").show();
+            $(".bmiHtWt").hide();
+            $("#txtBMI").attr('required', '');
+            $("#txtWeight").removeAttr('required');
+            $("#txtHeight").removeAttr('required');
+            $("#BMIValue").hide();
+            $("#entBMI").html("Enter Weight and Height");
+        }
+        else
+        {
+            $(".bmiHtWt").show();
+            $(".bmiDirect").hide();
+            $("#txtBMI").removeAttr('required');
+            $("#txtWeight").attr('required','');
+            $("#txtHeight").attr('required','');
+            $("#BMIValue").show();
+            $("#entBMI").html("Enter BMI");
+        }
+    });
+      
 });
 
 function txtAge_Val() {
@@ -370,6 +439,31 @@ function txtAge_Val() {
         }
 }
 
+function txtNewBMI_Val(){
+    if ($("#entBMI").text ==="Enter Weight and Height")
+    {
+        if (txtBMI_Val())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        if (txtWeight_Val() && txtHeight_Val())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+
 function txtBMI_Val() {
         var input = $("#txtBMI");
         
@@ -394,6 +488,61 @@ function txtBMI_Val() {
             $("#myForm input").prop("disabled",false);
             $("#myForm button").prop("disabled",false);
             $("#Diabetes").focus();
+            return true;
+        }
+}
+
+function txtHeight_Val() {
+        var input = $("#txtHeight");
+        
+        if ((parseFloat(input.val()) < 40 || parseFloat(input.val()) > 82) || (input.val() === ''))
+        {
+            if (txtHeightToolTipOn===1)
+            {
+                $("#txtHeight").tooltip("show");
+                input.removeClass("valid").addClass("invalid");
+                $("#myForm input").prop("disabled",true);
+                $("#myForm button").prop("disabled",true);
+                $("#txtHeight").prop("disabled",false);
+                $("#txtHeight").focus();
+                txtHeightToolTipOn = 0;
+            }
+             return false;
+        }
+        else
+        {
+            $("#txtHeight").tooltip("hide");
+            input.removeClass("invalid").addClass("valid");
+            $("#myForm input").prop("disabled",false);
+            $("#myForm button").prop("disabled",false);
+            $("#txtWeight").focus();
+            return true;
+        }
+}
+
+function txtWeight_Val() {
+        var input = $("#txtWeight");
+        
+        if ((parseFloat(input.val()) < 80 || parseFloat(input.val()) > 350) || (input.val() === ''))
+        {
+            if (txtWeightToolTipOn===1)
+            {
+                $("#txtWeight").tooltip("show");
+                input.removeClass("valid").addClass("invalid");
+                $("#myForm input").prop("disabled",true);
+                $("#myForm button").prop("disabled",true);
+                $("#txtWeight").prop("disabled",false);
+                $("#txtWeight").focus();
+                txtWeightToolTipOn = 0;
+            }
+             return false;
+        }
+        else
+        {
+            $("#txtWeight").tooltip("hide");
+            input.removeClass("invalid").addClass("valid");
+            $("#myForm input").prop("disabled",false);
+            $("#myForm button").prop("disabled",false);
             return true;
         }
 }
@@ -449,7 +598,12 @@ function serCreat_Val() {
         $("#Ser_Creat").removeClass("invalid").addClass("valid");
         $("#myForm input").prop("disabled",false);
         $("#myForm button").prop("disabled",false);
+        $("#sub").focus();
         return true;
     }
 }
-
+function calc_bmi(ht,wt)
+{
+    var ret_val = (wt/ht/ht)*703;
+    return ret_val;
+}
