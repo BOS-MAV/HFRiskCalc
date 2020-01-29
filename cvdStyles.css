@@ -50,6 +50,10 @@
                 text-align:left;
                 font-size: 1.25em;
             }
+           .txtLabel {
+                background-color: white;
+                color: black;
+            }
 
             .topLabel1 {
                 display: block;
