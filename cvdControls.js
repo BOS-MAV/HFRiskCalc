@@ -25,10 +25,10 @@ $("input:radio[name='thename']").each(function (i) {
 });
 $(document).ready(function () {
     $("#txtAge").focus();
-    $("#txtAge").tooltip({title: "Please enter an age between 20 and 79", placement: "bottom", trigger: "manual"});
+    $("#txtAge").tooltip({title: "Please enter an age between 40 and 79", placement: "bottom", trigger: "manual"});
     $("#txtBMI").tooltip({title: "Please enter a BMI between 15 and 50", placement: "bottom", trigger: "manual"});
     $("#sexMark").tooltip({title: "Please choose either Male or Female", placement: "bottom", trigger: "manual"});
-    $("#raceMark").tooltip({title: "Please choose White, African American or Other", placement: "bottom", trigger: "manual"});
+    $("#raceMark").tooltip({title: "Please choose White or African American", placement: "bottom", trigger: "manual"});
     $("#BP_Sys").tooltip({title: "Please enter a systolic blood pressure between 80 and 300 mm HG", placement: "right", trigger: "manual"});
     $("#diabMark").tooltip({title: "Please choose either yes or no",placement: "bottom", trigger: "manual"});
     $("#smokeMark").tooltip({title: "Please choose current, former or never",placement:"bottom",trigger:"manual"});
@@ -414,7 +414,7 @@ $(document).ready(function () {
 
 function txtAge_Val() {
         var input = $("#txtAge");
-        if ((parseInt(input.val()) < 20 || parseInt(input.val()) > 79) || (input.val() === ''))
+        if ((parseInt(input.val()) < 40 || parseInt(input.val()) > 79) || (input.val() === ''))
         {
             if (txtAgeToolTipOn===1)
             {
