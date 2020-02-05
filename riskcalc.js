@@ -55,7 +55,7 @@ function calc_risk()
                 race_t = $("input[name = 'Race']:checked").val();
                 if (race_t === 'White')
                     race = 0;
-                else if (race_t === 'African American')
+                else if (race_t === 'AfrAm')
                     race = 1;
                 else
                     race = 0;
@@ -110,8 +110,8 @@ function calc_risk()
                     pMI = 1;
                 else
                     pMI = 0;
-                if ($("input[name = 'PrevCad']:checked").val() === "Yes")
-                    pCAD = 1;
+                if ($("input[name = 'PrevCAD']:checked").val() === "Yes")
+                    pCAD = 1; 
                 else
                     pCAD = 0;
                 if ($("input[name = 'PrevAFIB']:checked").val() === "Yes")
