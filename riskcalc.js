@@ -175,11 +175,11 @@ function calc_risk()
                 if ((sex === 0) && (race ===0)) //white male
                 {
                     //first HFpEF
-                    xBeta[0] = mcage2[0]*-12109 + mcage2ln[0] * 2661.4 + diabetes*0.51164 + mcbmi1[0]*-270.14+mcbmi2[0]*3066+mcsbp1[0]*-1049.4+mcsbp2[0]*60782;
-                    xBeta[0] += hypertension * 0.43238 + pMI * 0.79943 + aFib * 0.64536 + smokerWeight[0] + COPD * 0.73618 + mcegfr1[0] * -0.059238;
-                    xBeta[0] += mcegfr2[0] * 0.0003754;
+                    xBeta[0] = mcage2[0]*-12109 + mcage2ln[0] * 2661.4 + diabetes*0.51164 + mcbmi1[0]*9425.8+mcbmi2[0]*-3602.1+mcsbp1[0]*-985.64+mcsbp2[0]*57223;
+                    xBeta[0] += hypertension * 0.4293 + pMI * 0.78142 + aFib * 0.58838 + smokerWeight[0] + COPD * 0.75054 + mcegfr1[0] * -0.053519;
+                    xBeta[0] += mcegfr2[0] * 0.0003394;
                     //now HFrEF
-                    xBeta[1] = mcage2[1]*-36839 + mcage2ln[1] * 10034 + diabetes*0.54141 + mcbmi1[1]*319.93+mcbmi2[1]*-143.43+mcsbp1[1]*-903.06+mcsbp2[1]*55221;
+                    xBeta[1] = mcage2[1]*-25555 + mcage2ln[1] * 6884.9 + diabetes*0.52724 + mcbmi1[1]*291.46+mcbmi2[1]*-143.43+mcsbp1[1]*-903.06+mcsbp2[1]*55221;
                     xBeta[1] += hypertension * 0.27418 + pMI * 0.86422 + pCAD * 0.58366 + aFib * 0.4946 + smokerWeight[1] + COPD * 0.37526 + mcegfr1[1] * -0.053074;
                     xBeta[1] += mcegfr2[1] * 0.0003372;
                 }
