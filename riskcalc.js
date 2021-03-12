@@ -39,8 +39,8 @@ function calc_risk()
                 //now get HFrEF
                 HFrEFCoeff =    [[0.0002719,0.0003432,0.0003601,0.0004374],
                                 [0.001109,0.001359,0.001416,0.001685],
-                                [0.03513,0.0355,0.03556,0.03422],
                                 [0.1171,0.1179,0.1178,0.1148],
+                                [0.03513,0.0355,0.03556,0.03422],                
                                 [0.007443,0.00737,0.007766,0.007732],
                                 [0.0000564,0.0000554,0.0000615,0.0000609],
                                 [75.99,86.09,79.89,93.16],
@@ -106,6 +106,7 @@ function calc_risk()
                 BMI_2 = Math.pow(BMI,-2);
                 // Define BMI^{-1} * ln(BMI), used in HFrEF risk equation only
                 BMI_1ln = BMI_1*Math.log(BMI);
+                BMI_2ln = BMI_2*Math.log(BMI);
                 if ($("input[name = 'PrevMI']:checked").val() === "Yes")
                     pMI = 1;
                 else
@@ -154,10 +155,10 @@ function calc_risk()
                 //all arrays have the first element for HFpEF and second for HFrEF
                 //first bmi-1
            
-                mcbmi1[0] = mean_center(HFpEFCoeff[2],BMI_1,sex,race);
+                mcbmi1[0] = mean_center(HFpEFCoeff[2],BMI_2,sex,race);
                 mcbmi1[1] = mean_center(HFrEFCoeff[2],BMI_1,sex,race);
                 //next bmi-2
-                mcbmi2[0] = mean_center(HFpEFCoeff[3],BMI_2,sex,race);
+                mcbmi2[0] = mean_center(HFpEFCoeff[3],BMI_2ln,sex,race);
                 mcbmi2[1] = mean_center(HFrEFCoeff[3],BMI_1ln,sex,race); //replaced BMI_2 with BMI_1ln
                 //now SBP-1
                 mcsbp1[0] = mean_center(HFpEFCoeff[4],SBP_1,sex,race);
@@ -174,7 +175,7 @@ function calc_risk()
                 if ((sex === 0) && (race ===0)) //white male
                 {
                     //first HFpEF
-                    xBeta[0] = mcage2[0]*-23673 + mcage2ln[0] * 5920.4 + diabetes*0.53733 + mcbmi1[0]*-270.14+mcbmi2[0]*3066+mcsbp1[0]*-1049.4+mcsbp2[0]*60782;
+                    xBeta[0] = mcage2[0]*-12109 + mcage2ln[0] * 2661.4 + diabetes*0.51164 + mcbmi1[0]*-270.14+mcbmi2[0]*3066+mcsbp1[0]*-1049.4+mcsbp2[0]*60782;
                     xBeta[0] += hypertension * 0.43238 + pMI * 0.79943 + aFib * 0.64536 + smokerWeight[0] + COPD * 0.73618 + mcegfr1[0] * -0.059238;
                     xBeta[0] += mcegfr2[0] * 0.0003754;
                     //now HFrEF
