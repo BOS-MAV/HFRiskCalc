@@ -175,8 +175,8 @@ function calc_risk()
                 if ((sex === 0) && (race ===0)) //white male
                 {
                     //first HFpEF
-                    xBeta[0] = mcage2[0]*-12109 + mcage2ln[0] * 2661.4 + diabetes*0.51164 + mcbmi1[0]*9425.8+mcbmi2[0]*-3602.1+mcsbp1[0]*-985.64+mcsbp2[0]*57223;
-                    xBeta[0] += hypertension * 0.4293 + pMI * 0.78142 + aFib * 0.58838 + smokerWeight[0] + COPD * 0.75054 + mcegfr1[0] * -0.053519;
+                    xBeta[0] = mcage2[0]*-12109 + mcage2ln[0] * 2661.4 + diabetes*0.51164 + mcbmi2[0]*9425.8+mcBMI_2ln[0]*-3602.1+mcsbp1[0]*-985.64+mcsbp2[0]*57223;
+                    xBeta[0] += hypertension * 0.4293 + pMI * 0.78142 + aFib * 0.58838 + smokerWeight[0] + COPD * 0.74054 + mcegfr1[0] * -0.053519;
                     xBeta[0] += mcegfr2[0] * 0.0003394;
                     //now HFrEF
                     xBeta[1] = mcage2[1]*-25555 + mcage2ln[1] * 6884.9 + diabetes*0.52724 + mcbmi1[1]*291.46+mcbmi2[1]*-143.43+mcsbp1[1]*-903.06+mcsbp2[1]*55221;
@@ -190,9 +190,9 @@ function calc_risk()
                     xBeta[0] += hypertension * 0.48128 + pMI * 0.98355 + aFib * 0.73928 + smokerWeight[0] + COPD * 0.61387 + mcegfr1[0] * -0.053562;
                     xBeta[0] += mcegfr2[0] * 0.0002814;
                     //now HFrEF
-                    xBeta[1] = mcage2[1]*-12596 + mcage2ln[1] * 3139.3 + diabetes*0.46185 + mcbmi1[1]*258.9+mcbmi2[1]*-113.95+mcsbp1[1]*-967.59+mcsbp2[1]*54779;
-                    xBeta[1] += hypertension * 0.31285 + pMI * 0.89877 + pCAD * 0.53809+ aFib * 0.65053 + smokerWeight[1] + COPD * 0.26295 + mcegfr1[1] * -0.042165;
-                    xBeta[1] += mcegfr2[1] * 0.0002299;
+                    xBeta[1] = mcage2[1]*-12596 + mcage2ln[1] * 3139.3 + diabetes*0.46185 + mcbmi1[1]*291.46+mcbmi2[1]*-130.9+mcsbp1[1]*-796.09+mcsbp2[1]*48792;
+                    xBeta[1] += hypertension * 0.27142 + pMI * 0.86434 + pCAD * 0.54165+ aFib * 0.45181 + smokerWeight[1] + COPD * 0.36901 + mcegfr1[1] * -0.04887;
+                    xBeta[1] += mcegfr2[1] * 0.000308;
                 }
                 else if ((sex === 1) && (race === 0)) //White Female
                 {
