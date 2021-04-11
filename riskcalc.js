@@ -220,23 +220,23 @@ function calc_risk()
                 eXbeta[1] = Math.exp(xBeta[1]);
                 if ((sex === 0) && (race ===0)) //white male
                 {
-                    risk[0] = 1- Math.pow(0.9876515,eXbeta[0]);
-                    risk[1] = 1 - Math.pow(0.9815184,eXbeta[1]);
+                    risk[0] = 1- Math.pow(0.9876620,eXbeta[0]);
+                    risk[1] = 1 - Math.pow(0.9810523,eXbeta[1]);
                 }
                 else  if ((sex === 0) && (race ===1)) //African American male
                 {
-                    risk[0] = 1- Math.pow(0.9874179,eXbeta[0]);
-                    risk[1] = 1 - Math.pow(0.9772750,eXbeta[1]);
+                    risk[0] = 1- Math.pow(0.9875125,eXbeta[0]);
+                    risk[1] = 1 - Math.pow(0.9772251,eXbeta[1]);
                 }
                 else if ((sex === 1) && (race ===0)) //white females
                 {
-                    risk[0] = 1- Math.pow(0.9923794,eXbeta[0]);
-                    risk[1] = 1 - Math.pow(0.9936674,eXbeta[1]);
+                    risk[0] = 1- Math.pow(0.9922709,eXbeta[0]);
+                    risk[1] = 1 - Math.pow(0.9936850,eXbeta[1]);
                 }
                 else if ((sex === 1) && (race ===1)) //African American females
                 {
-                    risk[0] = 1- Math.pow(0.9936079,eXbeta[0]);
-                    risk[1] = 1 - Math.pow(0.9941458,eXbeta[1]);
+                    risk[0] = 1- Math.pow(0.9929547,eXbeta[0]);
+                    risk[1] = 1 - Math.pow(0.9942633,eXbeta[1]);
                 }
                 risk[0] = numberFormat(risk[0]*100,2);
                 risk[1] = numberFormat(risk[1]*100,2)
