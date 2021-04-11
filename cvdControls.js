@@ -37,6 +37,7 @@ $(document).ready(function () {
     $("#COPD").tooltip({title:"Please choose either yes or no", placement: "bottom",trigger:"manual"});
     $("#txtHeight").tooltip({title:"Please enter a height between 40 and 82 inches",placement:"bottom",trigger:"manual"});
     $("#txtWeight").tooltip({title:"Please enter a weight between 80 and 350 pounds",placement:"bottom",trigger:"manual"});
+    $(".miInput").hide();
     $('#sub').on('click', function (event) {
         var isvalidate = $("#myForm")[0].checkValidity();
         if ((isvalidate) && txtAge_Val() && txtNewBMI_Val() && bpSys_Val()) {
@@ -269,8 +270,7 @@ $(document).ready(function () {
             $("#smokeMark1").removeClass("btn-selected");
         }
         else
-                    {
-            
+         {
             $("#smokeMark1").addClass("btn-selected");
             $("#smokeNGlyph").show();
             $("#smokeYGlyph").hide();
