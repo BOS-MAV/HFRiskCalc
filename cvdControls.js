@@ -315,7 +315,7 @@ $(document).ready(function () {
             $("#prevMIYGlyph").hide();
             $("#prevMIMark").removeClass("btn-selected");
         }
-       $("#PrevCAD").focus();
+       $("#PrevAFIB").focus();
     });
     $("input[name='PrevCAD']").change(function () {
        $("#CADMark").tooltip("hide");
@@ -325,6 +325,8 @@ $(document).ready(function () {
             $("#CADYGlyph").show();
             $("#CADNGlyph").hide();            
             $("#CADMark1").removeClass("btn-selected");
+            $(".miInput").show();
+            $("#PrevMI").focus();
         }
         else
         {
@@ -333,8 +335,10 @@ $(document).ready(function () {
             $("#CADNGlyph").show();
             $("#CADYGlyph").hide();
             $("#CADMark").removeClass("btn-selected");
+            $(".miInput").hide();
+            $("#PrevAFIB").focus();
         }
-       $("#PrevAFIB").focus();
+ 
     });
      $("input[name='PrevAFIB']").change(function () {
        $("#aFibMark").tooltip("hide");
