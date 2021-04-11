@@ -186,13 +186,13 @@ function calc_risk()
                 else if ((sex === 0) && (race ===1)) //African American male
                 {
                     //first HFpEF
-                    xBeta[0] = mcage2[0]*10787 + mcage2ln[0] * -3908.1 + diabetes*0.63235 + mcbmi1[0]*-234.58+mcbmi2[0]*2750.4+mcsbp1[0]*-1217+mcsbp2[0]*70479;
-                    xBeta[0] += hypertension * 0.48128 + pMI * 0.98355 + aFib * 0.73928 + smokerWeight[0] + COPD * 0.61387 + mcegfr1[0] * -0.053562;
-                    xBeta[0] += mcegfr2[0] * 0.0002814;
+                    xBeta[0] = mcage2[0]*14095 + mcage2ln[0] * -4872.6 + diabetes*0.57952 + mcbmi1[0]*7548.3+mcbmi2[0]*-2880.9+mcsbp1[0]*-1087.4+mcsbp2[0]*62181;
+                    xBeta[0] += hypertension * 0.49896 + pMI * 0.93678 + aFib * 0.67559 + smokerWeight[0] + COPD * 0.5999 + mcegfr1[0] * -0.049801;
+                    xBeta[0] += mcegfr2[0] * 0.0002633;
                     //now HFrEF
-                    xBeta[1] = mcage2[1]*-12596 + mcage2ln[1] * 3139.3 + diabetes*0.46185 + mcbmi1[1]*291.46+mcbmi2[1]*-130.9+mcsbp1[1]*-796.09+mcsbp2[1]*48792;
-                    xBeta[1] += hypertension * 0.27142 + pMI * 0.86434 + pCAD * 0.54165+ aFib * 0.45181 + smokerWeight[1] + COPD * 0.36901 + mcegfr1[1] * -0.04887;
-                    xBeta[1] += mcegfr2[1] * 0.000308;
+                    xBeta[1] = mcage2[1]*-83492 + mcage2ln[1] * -385.19 + diabetes*0.47692 + mcbmi1[1]*233.43+mcbmi2[1]*-101.8+mcsbp1[1]*-837.18+mcsbp2[1]*46639;
+                    xBeta[1] += hypertension * 0.30714 + pMI * 0.93181 + pCAD * 0.48043+ aFib * 0.641 + smokerWeight[1] + COPD * 0.23856 + mcegfr1[1] * -0.037254;
+                    xBeta[1] += mcegfr2[1] * 0.000199;
                 }
                 else if ((sex === 1) && (race === 0)) //White Female
                 {
@@ -200,10 +200,10 @@ function calc_risk()
                     xBeta[0] = mcage2[0]*5994.6 + mcage2ln[0] * -2947.9 + diabetes*0.63336 + mcbmi1[0]*6559.6+mcbmi2[0]*-2527.3+mcsbp1[0]*-998.98+mcsbp2[0]*58704;
                     xBeta[0] += hypertension * 0.6391 + pMI * 0.88003 + aFib * 0.51617 + smokerWeight[0] + COPD * 0.58356 + mcegfr1[0] * -0.057943;
                     xBeta[0] += mcegfr2[0] * 0.000365;
-                    //now HFrEF next up 4/11/2021
-                    xBeta[1] = mcage2[1]*-26532 + mcage2ln[1] * 6659.8 + diabetes*0.58104 + mcbmi1[1]*168.13+mcbmi2[1]*-75.397+mcsbp1[1]*-621.61+mcsbp2[1]*28797;
-                    xBeta[1] += hypertension * 0.41315 + pMI * 1.0276 + pCAD * 0.50868 + aFib * 0.91438 + smokerWeight[1] + COPD * 0.43042 + mcegfr1[1] *-0.056461;
-                    xBeta[1] += mcegfr2[1] * 0.0003536;
+                    //now HFrEF 
+                    xBeta[1] = mcage2[1]*-9178.6 + mcage2ln[1] * 1609.2 + diabetes*0.6817 + mcbmi1[1]*158.83+mcbmi2[1]*-68.78+mcsbp1[1]*-346.89+mcsbp2[1]*15427;
+                    xBeta[1] += hypertension * 0.36158 + pMI * 1.1897 + pCAD * 0.38117 + aFib * 0.69002 + smokerWeight[1] + COPD * 0.44946 + mcegfr1[1] *-0.04332;
+                    xBeta[1] += mcegfr2[1] * 0.000291;
                 }
                 else if ((sex === 1) && (race === 1)) //African American Female
                 {
