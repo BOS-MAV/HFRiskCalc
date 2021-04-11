@@ -444,7 +444,7 @@ function txtAge_Val() {
 }
 
 function txtNewBMI_Val(){
-    if ($("#entBMI").text ==="Enter Weight and Height")
+    if ($("#entBMI").text() ==="Enter Weight and Height")
     {
         if (txtBMI_Val())
         {
