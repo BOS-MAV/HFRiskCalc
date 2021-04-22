@@ -298,16 +298,16 @@ function get_smokeWeight(type,sex,race,model)
         if (model === 0) //HFpEF
         {
             if (type === 2) //current
-                ret_val = 0.46217;
+                ret_val = 0.43049;
             else
-                ret_val = 0.2377;
+                ret_val = 0.22735;
         }
         else //HFrEF
         {
             if (type === 2) //current
-                ret_val = 0.54047;
+                ret_val = 0.50448;
             else
-                ret_val = 0.24067;
+                ret_val = 0.20731;
         }
     }
     else if ((sex ===0 ) && (race === 1)) //African American male
@@ -315,16 +315,16 @@ function get_smokeWeight(type,sex,race,model)
          if (model === 0) //HFpEF
         {
             if (type === 2) //current
-                ret_val = 0.31372;
+                ret_val = 0.35963;
             else
-                ret_val = 0.24107;
+                ret_val = 0.22241;
         }
         else //HFrEF
         {
             if (type === 2) //current
-                ret_val = 0.53331;
+                ret_val = 0.52881;
             else
-                ret_val = 0.30329;
+                ret_val = 0.28932;
         }
     }
     else if ((sex === 1 ) && (race === 0)) //White Female
@@ -332,16 +332,16 @@ function get_smokeWeight(type,sex,race,model)
         if (model === 0) //HFpEF
         {
             if (type === 2) //current
-                ret_val = 0.72708;
+                ret_val = 0.7404;
             else
-                ret_val = 0.2081;
+                ret_val = 0.3008;
         }
         else //HFrEF
         {
             if (type === 2) //current
-                ret_val = 0.81355;
+                ret_val = 0.83455;
             else
-                ret_val = 0.2261;
+                ret_val = 0.34033;
         }
     }
     else if ((sex === 1 ) && (race === 1)) //African American Women
@@ -349,16 +349,16 @@ function get_smokeWeight(type,sex,race,model)
         if (model === 0) //HFpEF
         {
             if (type === 2) //current
-                ret_val = 0.46656;
+                ret_val = 0.31292;
             else
-                ret_val = 0.13677;
+                ret_val = 0.19463;
         }
         else //HFrEF
         {
             if (type === 2) //current
-                ret_val = 0.82059;
+                ret_val = 0.84695;
             else
-                ret_val = 0.53959;
+                ret_val = 0.55106;
         }
     }
     return ret_val;
