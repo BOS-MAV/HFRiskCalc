@@ -213,7 +213,7 @@ function calc_risk()
                     xBeta[0] += mcegfr2[0] * 0.000148;
                     //now HFrEF
                     xBeta[1] = mcage2[1]*-25689 + mcage2ln[1] * 7198.6 + diabetes*0.47949 + mcbmi1[1]*81.192+mcbmi2[1]*-33.486+mcsbp1[1]*-1317.8+mcsbp2[1]*74320;
-                    xBeta[1] += hypertension * 0.46672 + pMI * 0.95611 + pcad *0.71224 + aFib * 1.8717 + smokerWeight[1] + COPD * 0.30188 + mcegfr1[1] * -0.06293;
+                    xBeta[1] += hypertension * 0.46672 + pMI * 0.95611 + pCAD *0.71224 + aFib * 1.8717 + smokerWeight[1] + COPD * 0.30188 + mcegfr1[1] * -0.06293;
                     xBeta[1] += mcegfr2[1] * 0.000338;
                 }
                 eXbeta[0] = Math.exp(xBeta[0]);
