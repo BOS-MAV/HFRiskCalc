@@ -175,7 +175,7 @@ function calc_risk()
                 if ((sex === 0) && (race ===0)) //white male
                 {
                     //first HFpEF
-                    xBeta[0] = mcage2[0]*-12109 + mcage2ln[0] * 2661.4 + diabetes*0.51164 + mcbmi2[0]*9425.8+mcbmi2[0]*-3602.1+mcsbp1[0]*-985.64+mcsbp2[0]*57223;
+                    xBeta[0] = mcage2[0]*-12109 + mcage2ln[0] * 2661.4 + diabetes*0.51164 + mcbmi1[0]*9425.8+mcbmi2[0]*-3602.1+mcsbp1[0]*-985.64+mcsbp2[0]*57223;
                     xBeta[0] += hypertension * 0.4293 + pMI * 0.78142 + aFib * 0.58838 + smokerWeight[0] + COPD * 0.74054 + mcegfr1[0] * -0.053519;
                     xBeta[0] += mcegfr2[0] * 0.0003394;
                     //now HFrEF
