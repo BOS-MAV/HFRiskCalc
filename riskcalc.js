@@ -30,8 +30,8 @@ function calc_risk()
                 //initialize arrays to hold the mean centering coefficients for HFpEF and HFrEF
                 HFpEFCoeff =    [[0.0002719,0.0003432,0.0003601,0.0004374],
                                 [0.001109,0.001359,0.001416,0.001685],
-                                [0.004203,0.004293,0.004327,0.004306],
                                 [0.001272,0.001308,0.001324,0.001216],
+                                [0.004203,0.004293,0.004327,0.004036],
                                 [0.007443,0.00737,0.007766,0.007732],
                                 [0.0000564,0.0000554,0.0000615,0.0000609],
                                 [75.99,86.09,79.89,93.16],
@@ -39,8 +39,8 @@ function calc_risk()
                 //now get HFrEF
                 HFrEFCoeff =    [[0.0002719,0.0003432,0.0003601,0.0004374],
                                 [0.001109,0.001359,0.001416,0.001685],
-                                [0.1171,0.1179,0.1178,0.1148],
                                 [0.03513,0.0355,0.03556,0.03422],                
+                                [0.1171,0.1179,0.1178,0.1148],
                                 [0.007443,0.00737,0.007766,0.007732],
                                 [0.0000564,0.0000554,0.0000615,0.0000609],
                                 [75.99,86.09,79.89,93.16],
@@ -111,6 +111,8 @@ function calc_risk()
                     pMI = 1;
                 else
                     pMI = 0;
+                if ($(".miInput").is(':hidden'))
+                    pMI = 0;
                 if ($("input[name = 'PrevCAD']:checked").val() === "Yes")
                     pCAD = 1; 
                 else
@@ -179,9 +181,9 @@ function calc_risk()
                     xBeta[0] += hypertension * 0.4293 + pMI * 0.78142 + aFib * 0.58838 + smokerWeight[0] + COPD * 0.74054 + mcegfr1[0] * -0.053519;
                     xBeta[0] += mcegfr2[0] * 0.0003394;
                     //now HFrEF
-                    xBeta[1] = mcage2[1]*-25555 + mcage2ln[1] * 6884.9 + diabetes*0.52724 + mcbmi1[1]*291.46+mcbmi2[1]*-143.43+mcsbp1[1]*-903.06+mcsbp2[1]*55221;
-                    xBeta[1] += hypertension * 0.27418 + pMI * 0.86422 + pCAD * 0.58366 + aFib * 0.4946 + smokerWeight[1] + COPD * 0.37526 + mcegfr1[1] * -0.053074;
-                    xBeta[1] += mcegfr2[1] * 0.0003372;
+                    xBeta[1] = mcage2[1]*-25555 + mcage2ln[1] * 6884.9 + diabetes*0.52724 + mcbmi1[1]*291.46+mcbmi2[1]*-130.9+mcsbp1[1]*-796.09+mcsbp2[1]*48792;
+                    xBeta[1] += hypertension * 0.27412 + pMI * 0.86434 + pCAD * 0.54165 + aFib * 0.45181 + smokerWeight[1] + COPD * 0.36901 + mcegfr1[1] * -0.04887;
+                    xBeta[1] += mcegfr2[1] * 0.000308;
                 }
                 else if ((sex === 0) && (race ===1)) //African American male
                 {
@@ -198,7 +200,7 @@ function calc_risk()
                 {
                     //first HFpEF
                     xBeta[0] = mcage2[0]*5994.6 + mcage2ln[0] * -2947.9 + diabetes*0.63336 + mcbmi1[0]*6559.6+mcbmi2[0]*-2527.3+mcsbp1[0]*-998.98+mcsbp2[0]*58704;
-                    xBeta[0] += hypertension * 0.6391 + pMI * 0.88003 + aFib * 0.51617 + smokerWeight[0] + COPD * 0.58356 + mcegfr1[0] * -0.057943;
+                    xBeta[0] += hypertension * 0.6391 + pMI * 0.88003 + aFib * 0.51617 + smokerWeight[0] + COPD * 0.58356 + mcegfr1[0] * 0.057943;
                     xBeta[0] += mcegfr2[0] * 0.000365;
                     //now HFrEF 
                     xBeta[1] = mcage2[1]*-9178.6 + mcage2ln[1] * 1609.2 + diabetes*0.6817 + mcbmi1[1]*158.83+mcbmi2[1]*-68.78+mcsbp1[1]*-346.89+mcsbp2[1]*15427;
