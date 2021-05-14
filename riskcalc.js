@@ -192,7 +192,7 @@ function calc_risk()
                     xBeta[0] += hypertension * 0.49896 + pMI * 0.93678 + aFib * 0.67559 + smokerWeight[0] + COPD * 0.5999 + mcegfr1[0] * -0.049801;
                     xBeta[0] += mcegfr2[0] * 0.0002633;
                     //now HFrEF
-                    xBeta[1] = mcage2[1]*-83492 + mcage2ln[1] * -385.19 + diabetes*0.47692 + mcbmi1[1]*233.43+mcbmi2[1]*-101.8+mcsbp1[1]*-837.18+mcsbp2[1]*46639;
+                    xBeta[1] = mcage2[1]*-83.492 + mcage2ln[1] * -385.19 + diabetes*0.47692 + mcbmi1[1]*233.43+mcbmi2[1]*-101.8+mcsbp1[1]*-837.18+mcsbp2[1]*46639;
                     xBeta[1] += hypertension * 0.30714 + pMI * 0.93181 + pCAD * 0.48043+ aFib * 0.641 + smokerWeight[1] + COPD * 0.23856 + mcegfr1[1] * -0.037254;
                     xBeta[1] += mcegfr2[1] * 0.000199;
                 }
@@ -200,7 +200,7 @@ function calc_risk()
                 {
                     //first HFpEF
                     xBeta[0] = mcage2[0]*5994.6 + mcage2ln[0] * -2947.9 + diabetes*0.63336 + mcbmi1[0]*6559.6+mcbmi2[0]*-2527.3+mcsbp1[0]*-998.98+mcsbp2[0]*58704;
-                    xBeta[0] += hypertension * 0.6391 + pMI * 0.88003 + aFib * 0.51617 + smokerWeight[0] + COPD * 0.58356 + mcegfr1[0] * 0.057943;
+                    xBeta[0] += hypertension * 0.6391 + pMI * 0.88003 + aFib * 0.51617 + smokerWeight[0] + COPD * 0.58356 + mcegfr1[0] * -0.057943;
                     xBeta[0] += mcegfr2[0] * 0.000365;
                     //now HFrEF 
                     xBeta[1] = mcage2[1]*-9178.6 + mcage2ln[1] * 1609.2 + diabetes*0.6817 + mcbmi1[1]*158.83+mcbmi2[1]*-68.78+mcsbp1[1]*-346.89+mcsbp2[1]*15427;
